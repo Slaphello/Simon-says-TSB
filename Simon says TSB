@@ -1,3 +1,4 @@
+-- Beta
 local mapIDs = {
     [10449761463] = true,    -- First map ID
     [130818724007978] = true -- Second map ID
@@ -17,7 +18,7 @@ if mapIDs[game.PlaceId] then
     local detectionRadiusSquared = 100
     local lastToggleTime, connection
 
-    -- Target animations hash table
+    -- Target animations
     local TARGET_ANIMATION_IDS = {
         ["rbxassetid://12351854556"] = true,
         ["rbxassetid://15311685628"] = true,
@@ -78,7 +79,7 @@ if mapIDs[game.PlaceId] then
         return false
     end
 
-    -- Send a message with a cooldown
+    -- Send a message
     local function sendMessage()
         if os.clock() - lastMessageTime > messageCooldown then
             task.defer(function()
@@ -89,7 +90,7 @@ if mapIDs[game.PlaceId] then
         end
     end
 
-    -- Start checking nearby players' animations
+    -- Start checking nearby players (animations check)
     local function startChecking()
         if connection then connection:Disconnect() end
         connection = RunService.Heartbeat:Connect(function()
